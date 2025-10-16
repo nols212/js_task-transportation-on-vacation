@@ -5,18 +5,23 @@
  */
 function calculateRentalCost(days) {
   // write code here
-  const costOneDay = 40;
+  const dailyRight = 40;
+  const longTerm = 7;
+  const longTermDiscount = 50;
+  const shortTerm = 3;
+  const shortTermDiscount = 20;
+  const basePrise = days * dailyRight;
 
-  if (days >= 7) {
-    return days * costOneDay - 50;
+  if (days < shortTerm) {
+    return basePrise;
   }
 
-  if (days >= 3 && days < 7) {
-    return days * costOneDay - 20;
+  if (days >= shortTerm && days < longTerm) {
+    return basePrise - shortTermDiscount;
   }
 
-  if (days < 3) {
-    return days * 40;
+  if (days >= longTerm) {
+    return basePrise - longTermDiscount;
   }
 }
 
